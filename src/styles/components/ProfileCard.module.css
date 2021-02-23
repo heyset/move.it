@@ -1,0 +1,27 @@
+.profileCard {
+    display: flex;
+    height: 5.5rem;
+}
+
+.profileCard > img {
+    height: 5.5rem;
+    width: 5.5rem;
+    border-radius: 50%;
+}
+
+.profileCard > div {
+    margin-left: 1.4375rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.profileCard > div > h2 {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--title);
+}
+
+.profileCard > div > span > img {
+    margin-right: 0.5rem;
+}

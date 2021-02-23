@@ -1,0 +1,23 @@
+.app {
+    height: 100vh;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.app > section {
+    margin-top: 6.875rem;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 6.4375rem;
+
+    flex: 1;
+}
+
+.app > section > div {
+    height: 31.25rem;
+    width: 100%;
+}
