@@ -1,0 +1,25 @@
+.completedChallenges {
+    display: flex;
+    flex-direction: column;
+}
+
+.completedChallenges > span {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.completedChallenges > span > h4 {
+    font-size: 1.125rem;
+    font-weight: 400;
+}
+
+.completedChallenges > span > h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.completedChallenges > hr {
+    margin-top: 0.938rem;
+    border: 1px solid #d7d8da;
+}

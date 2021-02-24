@@ -11,8 +11,8 @@
 .app > section {
     margin-top: 6.875rem;
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 6.4375rem;
+    grid-template-columns: 5fr 6fr;
+    gap: 6.625rem;
 
     flex: 1;
 }
@@ -20,4 +20,17 @@
 .app > section > div {
     height: 31.25rem;
     width: 100%;
+}
+
+.app > section > div:first-child {
+    display: flex;
+    flex-direction: column;
+}
+
+.app > section > div:first-child > * {
+    margin-top: 3.5rem;
+}
+
+.app > section > div:first-child > *:first-child {
+    margin-top: 0;
 }
