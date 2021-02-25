@@ -1,5 +1,8 @@
 import Head from 'next/head';
 
+import { ChallengeProvider } from '../contexts/ChallengeContext';
+import { UserProvider } from '../contexts/UserContext';
+
 import ChallengeCard from '../components/ChallengeCard';
 import Countdown from '../components/Countdown';
 import CompletedChallenges from '../components/CompletedChallenges';
@@ -15,19 +18,24 @@ export default function Home() {
         <title>Início - move.it</title>
       </Head>
 
-      <ExperienceBar />
+      <UserProvider>
+        <ExperienceBar />
+      </UserProvider>
 
       <section>
 
-        <div>
-          <ProfileCard />
-          <CompletedChallenges />
-          <Countdown />
-        </div>
-
-        <div>
-          <ChallengeCard />
-        </div>
+        <ChallengeProvider>
+          <div>
+            <UserProvider>
+              <ProfileCard />
+              <CompletedChallenges />
+            </UserProvider>
+            <Countdown />
+          </div>
+          <div>
+            <ChallengeCard />
+          </div>
+        </ChallengeProvider>
 
       </section>
     </div>

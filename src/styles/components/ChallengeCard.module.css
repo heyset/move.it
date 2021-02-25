@@ -38,3 +38,80 @@
 .noChallenge > h3 > img {
     width: 2rem;
 }
+
+.hasChallenge > span {
+    margin-top: 2.375rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    width: 75%;
+}
+
+.hasChallenge > span:first-child {
+    margin-top: 0;
+}
+
+.hasChallenge > span:first-child > h2 {
+    color: var(--blue);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.hasChallenge > span:first-child > hr {
+    width: 100%;
+    border: 1px solid var(--gray-line);
+    margin-top: 1.563rem;
+}
+
+.hasChallenge > span:nth-child(2) > img {
+    width: 8.75rem;
+}
+
+.hasChallenge > span:nth-child(2) > h1 {
+    margin-top: 1.5rem;
+    font-weight: 600;
+    font-size: 1.875rem;
+    color: var(--title);
+}
+
+.hasChallenge > span:nth-child(2) > h3 {
+    margin-top: 0.5rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.hasChallenge > span:last-child {
+    flex-direction: row;
+}
+
+.hasChallenge > span:last-child > button {
+    width: 10.875rem;
+    height: 3.125rem;
+    font-weight: 100;
+    color: var(--white);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 0.375rem;
+}
+
+.hasChallenge > span:last-child > button:first-child {
+    margin-right: 0.5rem;
+    background-color: var(--red);
+}
+
+.hasChallenge > span:last-child > button:first-child:hover {
+    background-color: var(--red-dark);
+}
+
+.hasChallenge > span:last-child > button:last-child {
+    background-color: var(--green);
+}
+
+.hasChallenge > span:last-child > button:last-child:hover {
+    background-color: var(--green-dark);
+}
