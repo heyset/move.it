@@ -1,11 +1,41 @@
 import { useEffect, useState } from 'react';
-import { start } from 'repl';
 
 import styles from '../styles/components/Countdown.module.css';
 
+function CountdownButton(props:{hasChallenge:boolean, isActive: boolean, onClick?: () => void}) {
+    const { hasChallenge, isActive, onClick } = props;
+
+    const CloseIcon = () => <svg width="14" height="14" className={styles.closeIcon} viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z" fill="#666666"/></svg>;
+
+    if(hasChallenge) {
+        return (
+            <button disabled>
+                Ciclo concluído <img src="icons/check_circle.svg" />
+            </button>
+        )
+    }
+
+    if(isActive) {
+        return (
+            <button className={styles.stopCountdownButton} onClick={onClick} >
+                Abandonar o ciclo <CloseIcon />
+            </button>
+        );
+    }
+
+    if(!isActive) {
+        return (
+            <button className={styles.startCountdownButton} onClick={onClick} >
+                Iniciar um ciclo <img src="icons/play.svg" />
+            </button>
+        )
+    }
+}
+
 function Countdown() {
-    const [timer, setTimer] = useState(25 * 60);
+    const [timer, setTimer] = useState(5);
     const [isActive, setIsActive] = useState(false);
+    const [hasChallenge, setHasChallenge] = useState(false);
 
     const minutes = Math.floor(timer / 60);
     const seconds = timer % 60;
@@ -17,6 +47,11 @@ function Countdown() {
         setIsActive(true);
     }
 
+    const stopCountdown = () => {
+        setIsActive(false);
+        setTimer(5);
+    }
+
     useEffect(() => {
         let oneSecondLapse: NodeJS.Timeout;
 
@@ -24,6 +59,10 @@ function Countdown() {
             oneSecondLapse = setTimeout(() => {
                 setTimer(timer => timer - 1);
             }, 1000);
+        } else if (timer === 0) {
+            setHasChallenge(true);
+        } else {
+            clearTimeout(oneSecondLapse);
         }
 
         return () => clearTimeout(oneSecondLapse);
@@ -44,9 +83,12 @@ function Countdown() {
                     <h1>{secondsDigits[1]}</h1>
                 </span>
             </div>
-            <button onClick={startCountdown}>
-                Iniciar um ciclo <img src="icons/play.svg" />
-            </button>
+
+            <CountdownButton
+                hasChallenge={hasChallenge}
+                isActive={isActive}
+                onClick={isActive ? stopCountdown : startCountdown}
+            />
         </div>
     );
 }

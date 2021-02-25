@@ -6,7 +6,7 @@ function ProfileCard() {
             <img src="https://github.com/heyset.png" alt="Matheus Inacio"/>
             <div>
                 <h2>Matheus Inacio</h2>
-                <span><img src="icons/level.svg" alt="icone seta verde apontando para cima"/> Level 1</span>
+                <span><img src="icons/level.svg" alt="icone seta verde apontando para cima"/> Nível 1</span>
             </div>
         </div>
     );

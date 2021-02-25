@@ -1,5 +1,6 @@
 import Head from 'next/head';
 
+import ChallengeCard from '../components/ChallengeCard';
 import Countdown from '../components/Countdown';
 import CompletedChallenges from '../components/CompletedChallenges';
 import ExperienceBar from '../components/ExperienceBar';
@@ -25,7 +26,7 @@ export default function Home() {
         </div>
 
         <div>
-          <h1>Inicie um ciclo</h1>
+          <ChallengeCard />
         </div>
 
       </section>
