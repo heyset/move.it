@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { ChallengeContext } from '../contexts/ChallengeContext';
+import { CountdownContext } from '../contexts/CountdownContext';
 
 import styles from '../styles/components/Countdown.module.css';
 
@@ -34,42 +35,10 @@ function CountdownButton(props:{hasChallenge:boolean, isActive: boolean, onClick
 }
 
 function Countdown() {
-    const [timer, setTimer] = useState(0.05 * 60);
-    const [isActive, setIsActive] = useState(false);
-    const [hasChallenge, setHasChallenge] = useState(false);
-    const { startNewChallenge } = useContext(ChallengeContext);
-
-    const minutes = Math.floor(timer / 60);
-    const seconds = timer % 60;
-
+    const { hasChallenge, isActive, minutes, seconds, startCountdown, resetCountdown } = useContext(CountdownContext);
+    
     const minutesDigits = minutes.toString().padStart(2, '0').split('');
     const secondsDigits = seconds.toString().padStart(2, '0').split('');
-
-    const startCountdown = () => {
-        setIsActive(true);
-    }
-
-    const stopCountdown = () => {
-        setIsActive(false);
-        setTimer(0.05 * 60);
-    }
-
-    useEffect(() => {
-        let oneSecondLapse: NodeJS.Timeout;
-
-        if(isActive && timer > 0) {
-            oneSecondLapse = setTimeout(() => {
-                setTimer(timer => timer - 1);
-            }, 1000);
-        } else if (timer === 0) {
-            setHasChallenge(true);
-            startNewChallenge();
-        } else {
-            clearTimeout(oneSecondLapse);
-        }
-
-        return () => clearTimeout(oneSecondLapse);
-    }, [isActive, timer]);
 
     return(
         <div className={styles.countdown}>
@@ -90,7 +59,7 @@ function Countdown() {
             <CountdownButton
                 hasChallenge={hasChallenge}
                 isActive={isActive}
-                onClick={isActive ? stopCountdown : startCountdown}
+                onClick={isActive ? resetCountdown : startCountdown}
             />
         </div>
     );

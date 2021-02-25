@@ -1,11 +1,24 @@
 import { useContext } from 'react';
 
 import { ChallengeContext } from '../contexts/ChallengeContext';
+import { CountdownContext } from '../contexts/CountdownContext';
 
 import styles from '../styles/components/ChallengeCard.module.css';
 
 function ChallengeCard() {
-    const { currentChallenge, resetChallenge } = useContext(ChallengeContext);
+    const { completeChallenge, currentChallenge, resetChallenge } = useContext(ChallengeContext);
+    const { resetCountdown } = useContext(CountdownContext);
+
+    function completeChallengeHandle() {
+        completeChallenge();
+        resetCountdown();
+    }
+
+    function failChallengeHandle() {
+        resetChallenge();
+        resetCountdown();
+    }
+
 
     return (
         <>
@@ -21,8 +34,8 @@ function ChallengeCard() {
                         <h3>{currentChallenge.description}</h3>
                     </span>
                     <span>
-                        <button onClick={resetChallenge}>Falhei</button>
-                        <button>Completei</button>
+                        <button onClick={failChallengeHandle}>Falhei</button>
+                        <button onClick={completeChallengeHandle}>Completei</button>
                     </span>
                 </div>
 

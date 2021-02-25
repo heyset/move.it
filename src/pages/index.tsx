@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
 import { ChallengeProvider } from '../contexts/ChallengeContext';
+import { CountdownProvider } from '../contexts/CountdownContext';
 import { UserProvider } from '../contexts/UserContext';
 
 import ChallengeCard from '../components/ChallengeCard';
@@ -20,24 +21,23 @@ export default function Home() {
 
       <UserProvider>
         <ExperienceBar />
-      </UserProvider>
-
-      <section>
 
         <ChallengeProvider>
-          <div>
-            <UserProvider>
-              <ProfileCard />
-              <CompletedChallenges />
-            </UserProvider>
-            <Countdown />
-          </div>
-          <div>
-            <ChallengeCard />
-          </div>
+          <CountdownProvider>
+            <section>
+              <div>
+                <ProfileCard />
+                <CompletedChallenges />
+                <Countdown />
+              </div>
+              <div>
+                <ChallengeCard />
+              </div>
+            </section>
+          </CountdownProvider>
         </ChallengeProvider>
 
-      </section>
+      </UserProvider>
     </div>
   )
 }
