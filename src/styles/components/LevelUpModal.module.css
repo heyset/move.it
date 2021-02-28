@@ -1,0 +1,49 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.levelUp {
+    position: relative;
+    background-color: var(--white);
+    border-radius: 0.4rem;
+    box-shadow: 0 0 3.75rem rgba(0, 0, 0, 0.05);
+    padding: 2.5rem 3.125rem;
+    text-align: center;
+}
+
+.levelUp button {
+    font-size: 0;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    border: none;
+    background-color: transparent;
+}
+
+.levelUp h1 {
+    font-weight: 600;
+    font-size: 8.75rem;
+    color: var(--blue);
+    background: url('/icons/levelup.svg') no-repeat;
+    background-size: contain;
+}
+
+.levelUp h2 {
+    font-weight: 600;
+    font-size: 1.875rem;
+    color: var(--title);
+}
+
+.levelUp h3 {
+    font-size: 1.25rem;
+    color: var(--text);
+    font-weight: 400;
+}
