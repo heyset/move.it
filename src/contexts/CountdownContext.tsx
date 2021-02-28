@@ -3,6 +3,8 @@ import { createContext, ReactNode, useContext, useEffect, useState } from 'react
 import { ChallengeContext } from './ChallengeContext';
 
 interface CountdownContextInterface {
+    completeCycle: () => void;
+    cyclesCompleted: number;
     hasChallenge:boolean;
     isActive:boolean;
     minutes:number;
@@ -19,10 +21,18 @@ export function CountdownProvider(props: {children: ReactNode}) {
     const [isActive, setIsActive] = useState(false);
     const [hasChallenge, setHasChallenge] = useState(false);
     const { startNewChallenge } = useContext(ChallengeContext);
+    const [cyclesCompleted, setCyclesCompleted] = useState(0);
 
     const minutes = Math.floor(timer / 60);
     const seconds = timer % 60;
 
+    const completeCycle = () => {
+        if(cyclesCompleted < 4) {
+            setCyclesCompleted(cycles => cycles + 1);
+        } else {
+            setCyclesCompleted(0);
+        }
+    }
     
     const startCountdown = () => {
         setIsActive(true);
@@ -53,6 +63,8 @@ export function CountdownProvider(props: {children: ReactNode}) {
 
     return (
         <CountdownContext.Provider value={{
+            cyclesCompleted,
+            completeCycle,
             hasChallenge,
             isActive,
             minutes,

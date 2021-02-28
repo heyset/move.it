@@ -35,14 +35,52 @@ function CountdownButton(props:{hasChallenge:boolean, isActive: boolean, onClick
 }
 
 function Countdown() {
-    const { hasChallenge, isActive, minutes, seconds, startCountdown, resetCountdown } = useContext(CountdownContext);
+    const { cyclesCompleted, hasChallenge, isActive, minutes, seconds, startCountdown, resetCountdown } = useContext(CountdownContext);
+
+    const colors = {
+        grey: "#C4C4C4",
+        blue: "#5965e0",
+        green: "#4cd62b",
+    }
+
+    const cycleColors = {
+        completed: hasChallenge ? colors.green : colors.blue,
+        notCompleted: colors.grey,
+    }
     
     const minutesDigits = minutes.toString().padStart(2, '0').split('');
     const secondsDigits = seconds.toString().padStart(2, '0').split('');
 
+    const CycleStep = (props: {color: string, key: number}) => 
+    <svg key={props.key} width="19" height="29" viewBox="0 0 19 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7.31578 0H19L11.6842 29H0L7.31578 0Z" fill={props.color} />    
+    </svg>;
+
+    const cycles = new Array(4).fill(false);
+
     return(
         <div className={styles.countdown}>
-            <div>
+            <div className={`${styles.stageContainer} ${hasChallenge ? styles.stageContainerOnBreak : null}`}>
+                <div>
+                    <span></span>
+                    <h3>{hasChallenge ? 'pausa' : 'foco'}</h3>
+                </div>
+                <div>
+                    <div>
+                        {
+                            cycles.map((cycle, index) => 
+                                <CycleStep 
+                                    color={index < cyclesCompleted ? cycleColors.completed : cycleColors.notCompleted}
+                                    key={index}
+                                />
+                            )
+                        }
+                    </div>
+                    <span></span>
+                </div>
+            </div>
+
+            <div className={styles.digitsContainer}>
                 <span>
                     <h1>{minutesDigits[0]}</h1>
                     <hr />

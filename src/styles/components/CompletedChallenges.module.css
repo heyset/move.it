@@ -1,6 +1,7 @@
 .completedChallenges {
     display: flex;
     flex-direction: column;
+    margin-top: 0.75rem;
 }
 
 .completedChallenges > span {

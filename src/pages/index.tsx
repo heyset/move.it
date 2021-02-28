@@ -7,7 +7,6 @@ import { UserProvider } from '../contexts/UserContext';
 
 import ChallengeCard from '../components/ChallengeCard';
 import Countdown from '../components/Countdown';
-import CompletedChallenges from '../components/CompletedChallenges';
 import ExperienceBar from '../components/ExperienceBar';
 import ProfileCard from '../components/ProfileCard';
 
@@ -38,7 +37,6 @@ export default function Home(props: ServerSideProps) {
             <section>
               <div>
                 <ProfileCard />
-                <CompletedChallenges />
                 <Countdown />
               </div>
               <div>

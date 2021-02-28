@@ -7,9 +7,10 @@ import styles from '../styles/components/ChallengeCard.module.css';
 
 function ChallengeCard() {
     const { completeChallenge, currentChallenge, resetChallenge } = useContext(ChallengeContext);
-    const { resetCountdown } = useContext(CountdownContext);
+    const { completeCycle, resetCountdown } = useContext(CountdownContext);
 
     function completeChallengeHandle() {
+        completeCycle();
         completeChallenge();
         resetCountdown();
     }

@@ -60,7 +60,7 @@
     fill: var(--white);
 }
 
-.countdown > div {
+.countdown > .digitsContainer {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -70,23 +70,23 @@
     filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-.countdown > div > p {
+.countdown > .digitsContainer > p {
     font-size: 6.5rem;
 }
 
-.countdown > div > span {
+.countdown > .digitsContainer > span {
     display: flex;
     position: relative;
 }
 
-.countdown > div > span > hr {
+.countdown > .digitsContainer > span > hr {
     position: absolute;
     left: 50%;
     border: 2px solid var(--background);
     height: 100%;
 }
 
-.countdown > div > span > h1 {
+.countdown > .digitsContainer > span > h1 {
     height: 9rem;
     background-color: var(--white);
     width: 5.5rem;
@@ -95,4 +95,46 @@
     justify-content: center;
 
     font-size: 7.5rem;
+}
+
+.stageContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.stageContainer h3 {
+    font-family: Cantarell, sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--blue);
+}
+
+.stageContainerOnBreak h3 {
+    color: var(--green);
+}
+
+.stageContainer > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stageContainer > div > span {
+    width: 1.5rem;
+    height: 0.75rem;
+    display: block;
+    background-color: var(--blue);
+}
+
+.stageContainerOnBreak > div > span {
+    background-color: var(--green);
+}
+
+.stageContainer > div:first-child > span {
+    margin-right: 1rem;
+}
+
+.stageContainer > div:last-child > span {
+    margin-left: 1rem;
 }
